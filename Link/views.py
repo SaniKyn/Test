@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect
 from . import service
-from django.http import HttpResponse
 from django.urls import reverse
-import pyshorteners
+
 
 
 def shorten(request, url):
     shortened_url_hash = service.shorten(url)
     shortened_url = request.build_absolute_uri(reverse('redirect', args=[shortened_url_hash]))
-    return HttpResponse(f'Shortened URL: <a href="{shortened_url}">{shortened_url}</a>')
+    return render(request, 'main/link.html', {'shortened_url': shortened_url})
 
 
 def index(request):
