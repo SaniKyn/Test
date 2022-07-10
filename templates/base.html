@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Link Shortener</title>
-  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Link Shortener</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 </head>
 <style>
   #main-card {
@@ -16,7 +16,15 @@
 </style>
 <body class="mdc-typography">
 <div id="main-card">
-  {% block content %}
-  {% endblock %}
+    {% if user.is_authenticated %}
+    <p>Hi {{ user.username }}!</p>
+    <p><a href="{% url 'logout' %}">Log out</a></p>
+    {% else %}
+    <p>You are not logged in.</p>
+    <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
 </div>
 </body>
+</html>

@@ -13,9 +13,11 @@
       </span>
     <input type="text" name="url" class="mdc-text-field__input" aria-labelledby="my-label-id">
   </label>
+  {% if user.is_authenticated %}
   <button class="mdc-button mdc-button--outlined" type="submit">
     <span class="mdc-button__ripple"></span>
     <span class="mdc-button__label">Shorten</span>
   </button>
+  {% endif %}
 </form>
 {% endblock %}
