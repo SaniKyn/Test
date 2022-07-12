@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . import service
+from Link import service
 from django.urls import reverse
 
 
