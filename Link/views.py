@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 from Link import service
 from django.urls import reverse
+from .models import LinkMapping
 
 
 def index(request):
@@ -20,3 +22,8 @@ def shorten(request, url):
     shortened_url_hash = service.shorten(url)
     shortened_url = request.build_absolute_uri(reverse('redirect', args=[shortened_url_hash]))
     return render(request, 'link.html', {'shortened_url': shortened_url})
+
+
+class ListLink(ListView):
+    model = LinkMapping
+    template_name = 'index.html'

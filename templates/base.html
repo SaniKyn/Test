@@ -24,4 +24,15 @@
     {% block content %}
     {% endblock content %}
 </div>
+<header>
+    {% for LinkMapping in object_list %}
+    <div class="link_list">
+        {% if user.is_authenticated %}
+        <p>{{link_list.hash}}</p>
+        {% else %}
+        <p>Hot have story</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</header>
 </html>
